@@ -1,12 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-void wordRevese(char[]);
-using  namespace std;
-int main()
+void wordRevese(char []);
+using namespace std;
+
+int main1()
 {
 	char str[1005];
-	int i=0,n=0;
+	int i = 0, n = 0;
 	ifstream infile;
 	ofstream outfile;
 
@@ -14,38 +15,40 @@ int main()
 	/*if (infile.is_open()){
 		cout << infile.is_open();
 	}*/
-	
-	infile.getline(str,1004);
+
+	infile.getline(str, 1004);
 	n = atoi(str);
-//	cout << n;
+	//	cout << n;
 	outfile.open("changed.out");
-	while(i<n)
+	while (i < n)
 	{
 		infile.getline(str, 1004);
 		wordRevese(str);
 		if (i < n - 1)
-			outfile << "Case #" << i + 1 << ": " << str<<endl;
-		else 
+			outfile << "Case #" << i + 1 << ": " << str << endl;
+		else
 			outfile << "Case #" << i + 1 << ": " << str;
-		cout<<"case #"<<i+1 <<": "<< str<<endl ;
+		cout << "case #" << i + 1 << ": " << str << endl;
 		i++;
 	}
 	outfile.close();
 	infile.close();
+	return 0;
 }
+
 void wordRevese(char string[])
 {
 	int spaceindex[500] = {-1};
-	int i, k=0, j = 0;
+	int i, k = 0, j = 0;
 	char string2[1004];
 	for (i = 0; string[i] != NULL; i++)
 	{
-		string2[i] = string[i];					//copy string 
+		string2[i] = string[i]; //copy string 
 	}
 	string2[i] = NULL;
 	for (i = 0; string2[i] != NULL; i++)
 	{
-		if (string2[i] == 32 && string2[i + 1]<'z'&& string2[i + 1]>'0')
+		if (string2[i] == 32 && string2[i + 1] < 'z' && string2[i + 1] > '0')
 		{
 			spaceindex[j++] = i;
 		}
@@ -61,7 +64,7 @@ void wordRevese(char string[])
 		}
 		string[k++] = ' ';
 	}
-	
+
 	for (i = 0; i < spaceindex[0]; i++)
 	{
 		string[k++] = string2[i];
